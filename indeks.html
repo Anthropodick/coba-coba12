@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Belajar Matematika Pribadi — SMP &amp; Awal SMA</title>
+<meta name="description" content="Belajar matematika SMP (Kelas 7–9) dan materi awal SMA (Kelas 10) plus tryout dinamis anti-bosan.">
+<meta name="theme-color" content="#f5f6fb">
+<link rel="stylesheet" href="style.css">
+<script>
+(function () {
+  try {
+    var t = localStorage.getItem('mtk.theme');
+    if (!t) t = (matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', t);
+    var m = document.querySelector('meta[name="theme-color"]');
+    if (m) m.setAttribute('content', t === 'dark' ? '#0e1320' : '#f5f6fb');
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Lewati ke konten</a>
+
+<header class="site-header" id="siteHeader">
+  <div class="wrap">
+    <div class="top-row">
+      <div class="brand">
+        <h1>∑ Belajar Matematika Pribadi</h1>
+        <p>Materi SMP (Kelas 7–9) &amp; cicilan awal SMA/SMK (Kelas 10) + Tryout dinamis</p>
+      </div>
+      <div class="header-actions">
+        <button type="button" class="api-key-btn" id="apiKeyBtn" title="Atur Gemini API Key" aria-label="Atur Gemini API Key">
+          <span aria-hidden="true">🔑</span>
+        </button>
+        <button type="button" class="theme-btn" id="themeBtn" aria-pressed="false" title="Ganti mode tampilan">
+          <span class="ti" aria-hidden="true">☾</span><span class="lbl">Mode Gelap</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="overall" aria-live="polite">
+      <div class="row"><strong>Progres belajar total</strong><span id="overallText">0 dari 0 bab dipahami</span></div>
+      <div class="bar"><i id="overallBar"></i></div>
+    </div>
+
+    <div class="search" id="searchBox">
+      <span class="ico" aria-hidden="true">⌕</span>
+      <input type="search" id="q" placeholder="Cari rumus atau bab… (mis. pythagoras, gradien, logaritma, peluang)" aria-label="Cari rumus atau bab" autocomplete="off">
+    </div>
+    <p class="search-hint" id="searchHint">Pencarian mencakup semua kelas. Tekan <kbd>/</kbd> untuk fokus ke kotak pencarian.</p>
+    <p class="sr-only" id="srStatus" aria-live="polite"></p>
+  </div>
+</header>
+
+<nav class="tabs" id="tabs" aria-label="Navigasi utama">
+  <div class="wrap tabs-inner" id="tabsInner"></div>
+</nav>
+
+<main class="wrap" id="main" tabindex="-1">
+  <section id="learnView" class="view" aria-label="Materi belajar"></section>
+  <section id="tryoutView" class="view" aria-label="Mode tryout" hidden></section>
+</main>
+
+<footer>
+  <div class="wrap">
+    Progres &amp; riwayat tryout tersimpan otomatis di browser ini (localStorage). Materi ada di <code>data-materi.js</code>,
+    mesin soal di <code>generator-soal.js</code>, logika aplikasi di <code>app.js</code>.
+  </div>
+</footer>
+
+<div class="modal" id="resultModal" hidden role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+  <div class="modal-box">
+    <button type="button" class="modal-x" id="modalClose" aria-label="Tutup">×</button>
+    <div id="resultBody"></div>
+  </div>
+</div>
+
+<div class="modal" id="apiKeyModal" hidden role="dialog" aria-modal="true" aria-labelledby="apiKeyTitle">
+  <div class="modal-box">
+    <button type="button" class="modal-x" id="apiKeyClose" aria-label="Tutup">×</button>
+    <div id="apiKeyBody"></div>
+  </div>
+</div>
+
+<script src="data-materi.js"></script>
+<script src="generator-soal.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
